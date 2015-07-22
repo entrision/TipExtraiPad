@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="112" id="KGk-i7-Jjw" customClass="OrderCell" customModule="TipExtraiPad" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="603" height="112"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIq-eX-gP8">
+                        <rect key="frame" x="8" y="8" width="587" height="95"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aeH-uY-Z5A">
+                        <rect key="frame" x="8" y="8" width="587" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="jWT-fw-L1V"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6wv-o3-R7U">
+                        <rect key="frame" x="8" y="102" width="587" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="FaU-01-frl"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcp-eA-tIc">
+                        <rect key="frame" x="8" y="8" width="1" height="95"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="5ko-Xs-yDY"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ibx-Ub-uOp">
+                        <rect key="frame" x="594" y="8" width="1" height="95"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="xs9-bx-kcT"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wUx-3Y-2YF">
+                        <rect key="frame" x="462" y="8" width="1" height="95"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="EKO-BL-7yD"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.048951048951048952" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="Ibx-Ub-uOp" firstAttribute="leading" secondItem="wUx-3Y-2YF" secondAttribute="trailing" constant="131" id="2cq-tC-gVj"/>
+                    <constraint firstAttribute="bottom" secondItem="wUx-3Y-2YF" secondAttribute="bottom" constant="8" id="5zs-26-0j8"/>
+                    <constraint firstItem="aeH-uY-Z5A" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="A52-V2-Ela"/>
+                    <constraint firstAttribute="bottom" secondItem="hcp-eA-tIc" secondAttribute="bottom" constant="8" id="Ad0-sW-5kw"/>
+                    <constraint firstItem="RIq-eX-gP8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Brc-fE-aRW"/>
+                    <constraint firstAttribute="bottom" secondItem="Ibx-Ub-uOp" secondAttribute="bottom" constant="8" id="FIo-vL-wUc"/>
+                    <constraint firstAttribute="trailing" secondItem="Ibx-Ub-uOp" secondAttribute="trailing" constant="8" id="JnG-bo-6yH"/>
+                    <constraint firstItem="aeH-uY-Z5A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Kem-ds-wqi"/>
+                    <constraint firstAttribute="bottom" secondItem="RIq-eX-gP8" secondAttribute="bottom" constant="8" id="NW4-ci-TYU"/>
+                    <constraint firstItem="hcp-eA-tIc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="PbX-kL-d35"/>
+                    <constraint firstItem="6wv-o3-R7U" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="WwX-cm-65t"/>
+                    <constraint firstItem="Ibx-Ub-uOp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="bXm-Pb-NUf"/>
+                    <constraint firstItem="wUx-3Y-2YF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="boa-iD-AcM"/>
+                    <constraint firstItem="hcp-eA-tIc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="eLj-t1-INh"/>
+                    <constraint firstAttribute="trailing" secondItem="aeH-uY-Z5A" secondAttribute="trailing" constant="8" id="ghH-PQ-P8s"/>
+                    <constraint firstAttribute="trailing" secondItem="RIq-eX-gP8" secondAttribute="trailing" constant="8" id="pH3-3u-ax2"/>
+                    <constraint firstAttribute="trailing" secondItem="6wv-o3-R7U" secondAttribute="trailing" constant="8" id="uf7-F6-dOQ"/>
+                    <constraint firstItem="RIq-eX-gP8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="xdF-Tn-Wkd"/>
+                    <constraint firstAttribute="bottom" secondItem="6wv-o3-R7U" secondAttribute="bottom" constant="8" id="zFf-3D-Tmq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="mainView" destination="RIq-eX-gP8" id="IEL-N3-Gwf"/>
+            </connections>
+            <point key="canvasLocation" x="569.5" y="339"/>
+        </tableViewCell>
+    </objects>
+</document>
