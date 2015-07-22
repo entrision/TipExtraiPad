@@ -4,6 +4,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Raleway-Regular.ttf">
+            <string>Raleway</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -17,6 +22,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="ZEc-a9-wYu">
+                                <rect key="frame" x="389" y="176" width="247" height="417"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ncj-MZ-eW9">
                                 <rect key="frame" x="512" y="0.0" width="512" height="768"/>
                                 <color key="backgroundColor" white="0.048705201048951048" alpha="1" colorSpace="calibratedWhite"/>
@@ -25,13 +33,50 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="mHM-nk-kCO"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OwZ-YJ-i7d">
+                                <rect key="frame" x="0.0" y="64" width="513" height="704"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGz-6Z-vyt">
+                                        <rect key="frame" x="117" y="614" width="279" height="65"/>
+                                        <color key="backgroundColor" red="0.0" green="0.45134992899999998" blue="0.67508680560000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="65" id="2Um-Y9-vt1"/>
+                                            <constraint firstAttribute="width" constant="279" id="DRL-41-MZZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="18"/>
+                                        <state key="normal" title="ORDER DELIVERED">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CNd-wr-D0J">
+                                        <rect key="frame" x="60" y="28" width="393" height="555"/>
+                                        <color key="backgroundColor" white="0.048951048951048952" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.05078125" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="CNd-wr-D0J" secondAttribute="trailing" constant="60" id="0iU-k5-GaI"/>
+                                    <constraint firstItem="CNd-wr-D0J" firstAttribute="top" secondItem="OwZ-YJ-i7d" secondAttribute="top" constant="28" id="6Ns-HJ-mV6"/>
+                                    <constraint firstAttribute="bottom" secondItem="rGz-6Z-vyt" secondAttribute="bottom" constant="25" id="Z8V-pe-9gf"/>
+                                    <constraint firstItem="CNd-wr-D0J" firstAttribute="leading" secondItem="OwZ-YJ-i7d" secondAttribute="leading" constant="60" id="bqc-zT-aUn"/>
+                                    <constraint firstItem="rGz-6Z-vyt" firstAttribute="top" secondItem="CNd-wr-D0J" secondAttribute="bottom" constant="31" id="eZe-eB-s5u"/>
+                                    <constraint firstItem="rGz-6Z-vyt" firstAttribute="leading" secondItem="OwZ-YJ-i7d" secondAttribute="leading" constant="117" id="jGu-5Q-AJo"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.052119755244755255" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="width" secondItem="OwZ-YJ-i7d" secondAttribute="width" multiplier="2:1" constant="-2" id="C30-Hk-q3x"/>
                             <constraint firstItem="Ncj-MZ-eW9" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="XxB-iT-WxW"/>
+                            <constraint firstItem="OwZ-YJ-i7d" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aF6-Aq-oi0"/>
+                            <constraint firstItem="OwZ-YJ-i7d" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="cLl-yS-Hmz"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ncj-MZ-eW9" secondAttribute="bottom" id="cMy-O3-gn2"/>
+                            <constraint firstAttribute="centerX" secondItem="ZEc-a9-wYu" secondAttribute="centerX" id="e3S-i7-z5S"/>
+                            <constraint firstAttribute="centerY" secondItem="ZEc-a9-wYu" secondAttribute="centerY" id="egE-aa-eXI"/>
                             <constraint firstAttribute="trailing" secondItem="Ncj-MZ-eW9" secondAttribute="trailing" id="g2T-V6-Erk"/>
                             <constraint firstAttribute="width" secondItem="Ncj-MZ-eW9" secondAttribute="width" multiplier="2:1" id="hx8-ok-iFO"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OwZ-YJ-i7d" secondAttribute="bottom" id="v3E-qR-ePG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Enh-Gx-5xk">
@@ -39,13 +84,19 @@
                             <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="63p-RI-ScC">
                                 <rect key="frame" x="-25" y="-15" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="serviceSwitchToggled:" destination="BYZ-38-t0r" eventType="valueChanged" id="OqH-Xa-Mef"/>
+                                </connections>
                             </switch>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
-                        <outlet property="theTableView" destination="Ncj-MZ-eW9" id="Sf6-kZ-zlc"/>
+                        <outlet property="detailView" destination="OwZ-YJ-i7d" id="5ci-FE-1Wj"/>
+                        <outlet property="itemTableView" destination="CNd-wr-D0J" id="leM-GW-FRw"/>
+                        <outlet property="menuTableView" destination="Ncj-MZ-eW9" id="jJy-Nf-xsa"/>
+                        <outlet property="serviceSwitch" destination="63p-RI-ScC" id="KEb-PG-Dkp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -71,4 +122,7 @@
             <point key="canvasLocation" x="685" y="1174"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="247" height="417"/>
+    </resources>
 </document>

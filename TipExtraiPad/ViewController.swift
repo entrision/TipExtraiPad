@@ -13,17 +13,34 @@ class ViewController: UIViewController {
     let cellID = "orderCellID"
     
     var dummyCell = OrderCell()
+    var itemTableHandler = ItemTableHandler()
 
-    @IBOutlet weak var theTableView: UITableView!
+    @IBOutlet weak var menuTableView: UITableView!
+    @IBOutlet weak var itemTableView: UITableView!
+    @IBOutlet weak var detailView: UIView!
+    @IBOutlet weak var serviceSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        theTableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        theTableView.registerNib(UINib(nibName: "OrderCell", bundle: nil), forCellReuseIdentifier: cellID)
+        menuTableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        menuTableView.registerNib(UINib(nibName: "OrderCell", bundle: nil), forCellReuseIdentifier: cellID)
+
+        itemTableView.dataSource = itemTableHandler
+        itemTableView.delegate = itemTableHandler
+        itemTableView.registerNib(UINib(nibName: "ItemCell", bundle: nil), forCellReuseIdentifier: "itemCellID")
+        itemTableView.separatorStyle = .None
         
         dummyCell = NSBundle.mainBundle().loadNibNamed("OrderCell", owner: self, options: nil)[0] as! OrderCell
+    }
+    
+    //MARK: Actions
+    
+    @IBAction func serviceSwitchToggled(sender: AnyObject) {
+        
+        menuTableView.hidden = !serviceSwitch.on
+        detailView.hidden = !serviceSwitch.on
     }
 }
 
