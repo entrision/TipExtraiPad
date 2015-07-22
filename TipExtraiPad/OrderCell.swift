@@ -8,9 +8,29 @@
 
 import UIKit
 
+protocol OrderCellDelegate {
+    func orderCellDidSelect(cell: OrderCell)
+}
+
 class OrderCell: UITableViewCell {
 
     @IBOutlet weak var mainView: UIView!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    
+    var delegate: OrderCellDelegate! = nil
+    
+    var order: Order = Order()  {
+        
+        didSet {
+            
+            titleLabel.text = "ORDER \(order.orderNumber) | \(order.customerName)"
+            priceLabel.text = String(format: "$%.2f", order.total)
+            quantityLabel.text = "\(order.orderItems.count) DRINKS"
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,11 +38,15 @@ class OrderCell: UITableViewCell {
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
+        if self.selected == selected {
+            return
+        }
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
         if selected {
-            mainView.backgroundColor = UIColor.blueColor()
+            mainView.backgroundColor = Colors.tipExtraBlue
+//            delegate.orderCellDidSelect(self)
         } else {
             mainView.backgroundColor = UIColor(white: 0.05, alpha: 1.0)
         }

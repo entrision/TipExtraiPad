@@ -124,6 +124,9 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="mainView" destination="RIq-eX-gP8" id="IEL-N3-Gwf"/>
+                <outlet property="priceLabel" destination="DQ5-5Z-gj0" id="rAr-EZ-BOs"/>
+                <outlet property="quantityLabel" destination="fT0-Kp-c1r" id="osd-Ca-oLG"/>
+                <outlet property="titleLabel" destination="m9m-5I-mO7" id="JCo-g7-mVb"/>
             </connections>
             <point key="canvasLocation" x="569.5" y="339"/>
         </tableViewCell>
