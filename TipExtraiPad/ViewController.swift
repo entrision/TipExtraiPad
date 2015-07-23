@@ -25,6 +25,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        title = "TIPEXTRA"
+        
         menuTableView.separatorStyle = UITableViewCellSeparatorStyle.None
         menuTableView.registerNib(UINib(nibName: "OrderCell", bundle: nil), forCellReuseIdentifier: cellID)
         menuTableView.indicatorStyle = UIScrollViewIndicatorStyle.White
