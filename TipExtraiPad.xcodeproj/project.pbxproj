@@ -137,13 +137,8 @@
 				047B53FD1B5FDA0000106180 /* AppDelegate.swift */,
 				047B53FF1B5FDA0000106180 /* ViewController.swift */,
 				04ABF0271B5FF1330079E5F3 /* ItemTableHandler.swift */,
-				04FD5DD81B6012B90061280B /* ItemTableHeaderView.swift */,
-				04FD5DDA1B6012C30061280B /* ItemTableHeaderView.xib */,
+				04A913891B6AC77800E8757B /* Views */,
 				047B54011B5FDA0000106180 /* Main.storyboard */,
-				047B541D1B5FDD0E00106180 /* OrderCell.swift */,
-				047B541E1B5FDD0E00106180 /* OrderCell.xib */,
-				0416D7111B5FEC9F005C721D /* ItemCell.swift */,
-				0416D7121B5FEC9F005C721D /* ItemCell.xib */,
 				04FD5DDC1B601E460061280B /* Model */,
 				047B54041B5FDA0000106180 /* Images.xcassets */,
 				047B54061B5FDA0000106180 /* LaunchScreen.xib */,
@@ -177,6 +172,19 @@
 				047B54121B5FDA0000106180 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		04A913891B6AC77800E8757B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				047B541D1B5FDD0E00106180 /* OrderCell.swift */,
+				047B541E1B5FDD0E00106180 /* OrderCell.xib */,
+				0416D7111B5FEC9F005C721D /* ItemCell.swift */,
+				0416D7121B5FEC9F005C721D /* ItemCell.xib */,
+				04FD5DD81B6012B90061280B /* ItemTableHeaderView.swift */,
+				04FD5DDA1B6012C30061280B /* ItemTableHeaderView.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		04FD5DDC1B601E460061280B /* Model */ = {
