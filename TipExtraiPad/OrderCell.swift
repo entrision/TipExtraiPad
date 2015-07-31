@@ -16,13 +16,13 @@ class OrderCell: UITableViewCell {
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
-    var order: Order = Order()  {
+    var order = Order()  {
         
         didSet {
-            
-            titleLabel.text = "ORDER \(order.orderNumber) | \(order.customerName)"
-            priceLabel.text = String(format: "$%.2f", order.total)
-            quantityLabel.text = "\(order.orderItems.count) DRINKS"
+            titleLabel.text = "ORDER \(order.orderID) | \(order.customerName)"
+            priceLabel.text = String(format: "$%.2f", order.orderTotal)
+            var drinksText = order.drinkTotal > 1 ? "DRINKS" : "DRINK"
+            quantityLabel.text = "\(order.drinkTotal) \(drinksText)"
         }
     }
     

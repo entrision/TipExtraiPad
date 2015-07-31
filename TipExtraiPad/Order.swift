@@ -10,29 +10,21 @@ import UIKit
 
 class Order: NSObject {
     
-    var orderNumber: String
+    var orderID: NSNumber
+    var orderTotal: Float
+    var drinkTotal: Int
     var customerName: String
-    var orderItems = NSArray()
-    var total: Float {
-        
-        get {
-            var theTotal: Float = 0.0
-            for var i=0; i<orderItems.count; i++ {
-                let menuItem = orderItems[i] as! MenuItem
-                theTotal += menuItem.price * Float(menuItem.quantity)
-            }
-            return theTotal
-        }
-    }
+    var orderItems: NSArray?
     
     convenience override init() {
-        self.init(orderNumber: "", customerName: "", orderItems: [])
+        self.init(orderDict:["id": 0, "order_total": 0.0, "drink_total": 0, "customer_name": ""])
     }
     
-    init(orderNumber: String, customerName: String, orderItems: NSArray) {
-        self.orderNumber = orderNumber
-        self.customerName = customerName
-        self.orderItems = orderItems
+    init(orderDict: [String: AnyObject]) {
+        self.orderID = orderDict["id"] as! NSNumber
+        self.orderTotal = orderDict["order_total"] as! Float
+        self.drinkTotal = orderDict["drink_total"] as! Int
+        self.customerName = orderDict["customer_name"] as! String
         super.init()
     }
 }

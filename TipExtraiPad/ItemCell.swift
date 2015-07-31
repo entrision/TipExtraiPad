@@ -14,12 +14,18 @@ class ItemCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var qtyLabel: UILabel!
     
-    var menuItem = MenuItem() {
+    var drink = Drink() {
         
         didSet {
             
-            titleLabel.text = menuItem.name
-            qtyLabel.text = "x \(menuItem.quantity)"
+            APIManager.getImage(drink.imageURL, success: { (theImage) -> () in
+                self.theImageView.image = theImage
+            }) { (error) -> () in
+                println(error)
+            }
+            
+            titleLabel.text = drink.name
+            qtyLabel.text = "x \(drink.quantity)"
         }
     }
     

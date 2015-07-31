@@ -32,15 +32,21 @@ extension ItemTableHandler: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return order.orderItems.count
+        var count = 0
+        if let items = order.orderItems {
+            count = items.count
+        }
+        return count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! ItemCell
         
-        let item = order.orderItems[indexPath.row] as! MenuItem
-        cell.menuItem = item
+        if let items = order.orderItems {
+            let drink = items[indexPath.row] as! Drink
+            cell.drink = drink
+        }
         
         cell.selectionStyle = .None
         
@@ -65,7 +71,7 @@ extension ItemTableHandler: UITableViewDelegate {
         
         if section == 0 {
             headerView = NSBundle.mainBundle().loadNibNamed("ItemTableHeaderView", owner: self, options: nil)[0] as? ItemTableHeaderView
-            headerView?.orderNumberLabel.text = "ORDER \(order.orderNumber)"
+            headerView?.orderNumberLabel.text = "ORDER \(order.orderID)"
             headerView?.customerNameLabel.text = order.customerName
         }
         

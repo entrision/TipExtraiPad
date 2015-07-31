@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040FA5B01B6BCEB600815D92 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FA5AF1B6BCEB600815D92 /* APIManager.swift */; };
 		0416D7071B5FE598005C721D /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0416D6FD1B5FE598005C721D /* OFL.txt */; };
 		0416D7081B5FE598005C721D /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0416D6FE1B5FE598005C721D /* Raleway-Bold.ttf */; };
 		0416D7091B5FE598005C721D /* Raleway-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0416D6FF1B5FE598005C721D /* Raleway-ExtraBold.ttf */; };
@@ -27,10 +28,11 @@
 		047B54141B5FDA0000106180 /* TipExtraiPadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B54131B5FDA0000106180 /* TipExtraiPadTests.swift */; };
 		047B541F1B5FDD0E00106180 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B541D1B5FDD0E00106180 /* OrderCell.swift */; };
 		047B54201B5FDD0E00106180 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047B541E1B5FDD0E00106180 /* OrderCell.xib */; };
+		04A0FB681B6BF69500409FC5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A0FB671B6BF69500409FC5 /* Utils.swift */; };
 		04ABF0281B5FF1330079E5F3 /* ItemTableHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABF0271B5FF1330079E5F3 /* ItemTableHandler.swift */; };
 		04FD5DD91B6012B90061280B /* ItemTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD5DD81B6012B90061280B /* ItemTableHeaderView.swift */; };
 		04FD5DDB1B6012C30061280B /* ItemTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FD5DDA1B6012C30061280B /* ItemTableHeaderView.xib */; };
-		04FD5DDE1B601E550061280B /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD5DDD1B601E550061280B /* MenuItem.swift */; };
+		04FD5DDE1B601E550061280B /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD5DDD1B601E550061280B /* Drink.swift */; };
 		04FD5DE01B601ECB0061280B /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD5DDF1B601ECB0061280B /* Order.swift */; };
 		04FD5DE21B6025410061280B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD5DE11B6025410061280B /* Colors.swift */; };
 		E4F6EF0828CD8A685C2B0F09 /* Pods_TipExtraiPad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60EBB751245DFC26DEBD05EC /* Pods_TipExtraiPad.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -47,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040FA5AF1B6BCEB600815D92 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		0416D6FD1B5FE598005C721D /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		0416D6FE1B5FE598005C721D /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
 		0416D6FF1B5FE598005C721D /* Raleway-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -71,10 +74,11 @@
 		047B54131B5FDA0000106180 /* TipExtraiPadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipExtraiPadTests.swift; sourceTree = "<group>"; };
 		047B541D1B5FDD0E00106180 /* OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		047B541E1B5FDD0E00106180 /* OrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
+		04A0FB671B6BF69500409FC5 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		04ABF0271B5FF1330079E5F3 /* ItemTableHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableHandler.swift; sourceTree = "<group>"; };
 		04FD5DD81B6012B90061280B /* ItemTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableHeaderView.swift; sourceTree = "<group>"; };
 		04FD5DDA1B6012C30061280B /* ItemTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemTableHeaderView.xib; sourceTree = "<group>"; };
-		04FD5DDD1B601E550061280B /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		04FD5DDD1B601E550061280B /* Drink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		04FD5DDF1B601ECB0061280B /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		04FD5DE11B6025410061280B /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		60EBB751245DFC26DEBD05EC /* Pods_TipExtraiPad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TipExtraiPad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +105,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040FA5AE1B6BCEA600815D92 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				040FA5AF1B6BCEB600815D92 /* APIManager.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		0416D6FC1B5FE598005C721D /* Raleway */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +156,7 @@
 				047B53FD1B5FDA0000106180 /* AppDelegate.swift */,
 				047B53FF1B5FDA0000106180 /* ViewController.swift */,
 				04ABF0271B5FF1330079E5F3 /* ItemTableHandler.swift */,
+				040FA5AE1B6BCEA600815D92 /* API */,
 				04A913891B6AC77800E8757B /* Views */,
 				047B54011B5FDA0000106180 /* Main.storyboard */,
 				04FD5DDC1B601E460061280B /* Model */,
@@ -160,6 +173,7 @@
 				0416D6FC1B5FE598005C721D /* Raleway */,
 				047B53FC1B5FDA0000106180 /* Info.plist */,
 				04FD5DE11B6025410061280B /* Colors.swift */,
+				04A0FB671B6BF69500409FC5 /* Utils.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -198,7 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				04FD5DDF1B601ECB0061280B /* Order.swift */,
-				04FD5DDD1B601E550061280B /* MenuItem.swift */,
+				04FD5DDD1B601E550061280B /* Drink.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -384,12 +398,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04FD5DDE1B601E550061280B /* MenuItem.swift in Sources */,
+				04FD5DDE1B601E550061280B /* Drink.swift in Sources */,
 				04FD5DE21B6025410061280B /* Colors.swift in Sources */,
+				040FA5B01B6BCEB600815D92 /* APIManager.swift in Sources */,
 				04ABF0281B5FF1330079E5F3 /* ItemTableHandler.swift in Sources */,
 				04FD5DE01B601ECB0061280B /* Order.swift in Sources */,
 				04FD5DD91B6012B90061280B /* ItemTableHeaderView.swift in Sources */,
 				0416D7131B5FEC9F005C721D /* ItemCell.swift in Sources */,
+				04A0FB681B6BF69500409FC5 /* Utils.swift in Sources */,
 				047B54001B5FDA0000106180 /* ViewController.swift in Sources */,
 				047B541F1B5FDD0E00106180 /* OrderCell.swift in Sources */,
 				047B53FE1B5FDA0000106180 /* AppDelegate.swift in Sources */,

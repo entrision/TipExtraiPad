@@ -37,8 +37,13 @@ class ViewController: UIViewController {
         itemTableView.separatorStyle = .None
         
         dummyCell = NSBundle.mainBundle().loadNibNamed("OrderCell", owner: self, options: nil)[0] as! OrderCell
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
-        self.addOrder()
+        getOrders()
+//        NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: Selector("getOrders"), userInfo: nil, repeats: true)
     }
     
     //MARK: Actions
@@ -50,17 +55,14 @@ class ViewController: UIViewController {
     }
     
     //MARK: Misc methods
-    
-    func addOrder() {
-        
-        let item1 = MenuItem(name: "VODKA MARTINI", price: 10.0, quantity: 1)
-        let item2 = MenuItem(name: "SCREWDRIVER", price: 6.0, quantity: 2)
-        let item3 = MenuItem(name: "ABITA PURPLEHAZE", price: 3.0, quantity: 4)
-        
-        let order1 = Order(orderNumber: "0252", customerName: "HUNTER WHITTLE", orderItems: [item1, item2])
-        let order2 = Order(orderNumber: "0253", customerName: "JOHN JONES", orderItems: [item3])
-        orderArray = [order1, order2]
-        self.menuTableView.reloadData()
+
+    func getOrders() {
+        APIManager.getOrders(1, success: { (responseStatus, responseArray) -> () in
+            self.orderArray = responseArray as! [Order]
+            self.menuTableView.reloadData()
+        }) { (error) -> () in
+            println(error)
+        }
     }
 }
 
@@ -92,8 +94,15 @@ extension ViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let cell = menuTableView.cellForRowAtIndexPath(indexPath) as! OrderCell
-        itemTableHandler.order = cell.order
-        itemTableView.reloadData()
+        
+        APIManager.getFullOrder(1, orderID: cell.order.orderID, success: { (responseStatus, responseDict) -> () in
+            let order = cell.order
+            order.orderItems = responseDict["order_items"] as? NSArray
+            self.itemTableHandler.order = order
+            self.itemTableView.reloadData()
+        }) { (error) -> () in
+            println(error)
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
