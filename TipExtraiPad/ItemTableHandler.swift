@@ -113,11 +113,3 @@ extension ItemTableHandler: UITableViewDelegate {
         return height
     }
 }
-
-extension ItemTableHandler: OrderCellDelegate {
-    
-    func orderCellDidSelect(cell: OrderCell) {
-        order = cell.order
-        
-    }
-}

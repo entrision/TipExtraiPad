@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol OrderCellDelegate {
-    func orderCellDidSelect(cell: OrderCell)
-}
-
 class OrderCell: UITableViewCell {
 
     @IBOutlet weak var mainView: UIView!
@@ -19,8 +15,6 @@ class OrderCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    
-    var delegate: OrderCellDelegate! = nil
     
     var order: Order = Order()  {
         
@@ -46,7 +40,6 @@ class OrderCell: UITableViewCell {
         // Configure the view for the selected state
         if selected {
             mainView.backgroundColor = Colors.tipExtraBlue
-//            delegate.orderCellDidSelect(self)
         } else {
             mainView.backgroundColor = UIColor(white: 0.05, alpha: 1.0)
         }
