@@ -78,6 +78,24 @@ class APIManager: NSObject {
         }
     }
     
+    class func completeOrder(menuID: NSNumber, orderID: NSNumber, success: (responseStatus: Int!, responseDict: NSDictionary!)->(), failure: (error: NSError!)->()) {
+        
+        let url = kBaseURL + "menus/\(menuID)/orders/\(orderID)"
+        Alamofire.request(.PATCH, url, parameters: ["order": ["complete": "true"]], encoding: .JSON, headers: nil)
+        .responseJSON { (request, response, JSON, error) -> Void in
+            let jsonDict = JSON as! NSDictionary
+            if error != nil {
+                failure(error: error)
+            } else {
+                if let errorDict = jsonDict.objectForKey(Utils.kErrorsKey) as? NSDictionary {
+                    success(responseStatus: Utils.kFailureStatus, responseDict: errorDict)
+                } else {
+                    success(responseStatus: Utils.kSuccessStatus, responseDict: nil)
+                }
+            }
+        }
+    }
+    
     //MARK: Menu
     
     class func toggleService(menuID: NSNumber, serviceOn: Bool, success: (responseStatus: Int!, responseDict: NSDictionary!)->(), failure: (error: NSError!)->()) {
@@ -87,7 +105,6 @@ class APIManager: NSObject {
         let url = kBaseURL + "menus/\(menuID)"
         Alamofire.request(.PATCH, url, parameters: params, encoding: .JSON, headers: nil)
         .responseJSON { (request, response, JSON, error) -> Void in
-            println(JSON)
             let jsonDict = JSON as! NSDictionary
             if error != nil {
                 failure(error: error)

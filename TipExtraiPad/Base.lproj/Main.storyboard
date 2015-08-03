@@ -47,7 +47,7 @@
                                         <rect key="frame" x="60" y="0.0" width="393" height="565"/>
                                         <color key="backgroundColor" white="0.048951048951048952" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGz-6Z-vyt">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGz-6Z-vyt" customClass="ActivityButton" customModule="TipExtraiPad" customModuleProvider="target">
                                         <rect key="frame" x="117" y="598" width="279" height="65"/>
                                         <color key="backgroundColor" red="0.0" green="0.45134992899999998" blue="0.67508680560000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -59,6 +59,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="deliveredButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KfC-GA-wWP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.05078125" alpha="1" colorSpace="calibratedWhite"/>
@@ -92,6 +95,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
+                        <outlet property="deliveredButton" destination="rGz-6Z-vyt" id="kWB-j5-3aW"/>
                         <outlet property="detailView" destination="OwZ-YJ-i7d" id="5ci-FE-1Wj"/>
                         <outlet property="itemActivity" destination="Ngb-IO-FBa" id="AZp-CR-OSc"/>
                         <outlet property="itemTableView" destination="CNd-wr-D0J" id="leM-GW-FRw"/>

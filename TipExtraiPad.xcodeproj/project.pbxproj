@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04084D431B6FED34000735F4 /* ActivityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04084D421B6FED34000735F4 /* ActivityButton.swift */; };
 		040FA5B01B6BCEB600815D92 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FA5AF1B6BCEB600815D92 /* APIManager.swift */; };
 		0416D7071B5FE598005C721D /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0416D6FD1B5FE598005C721D /* OFL.txt */; };
 		0416D7081B5FE598005C721D /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0416D6FE1B5FE598005C721D /* Raleway-Bold.ttf */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04084D421B6FED34000735F4 /* ActivityButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityButton.swift; sourceTree = "<group>"; };
 		040FA5AF1B6BCEB600815D92 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		0416D6FD1B5FE598005C721D /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		0416D6FE1B5FE598005C721D /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				0416D7121B5FEC9F005C721D /* ItemCell.xib */,
 				04FD5DD81B6012B90061280B /* ItemTableHeaderView.swift */,
 				04FD5DDA1B6012C30061280B /* ItemTableHeaderView.xib */,
+				04084D421B6FED34000735F4 /* ActivityButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				04FD5DD91B6012B90061280B /* ItemTableHeaderView.swift in Sources */,
 				0416D7131B5FEC9F005C721D /* ItemCell.swift in Sources */,
 				04A0FB681B6BF69500409FC5 /* Utils.swift in Sources */,
+				04084D431B6FED34000735F4 /* ActivityButton.swift in Sources */,
 				047B54001B5FDA0000106180 /* ViewController.swift in Sources */,
 				047B541F1B5FDD0E00106180 /* OrderCell.swift in Sources */,
 				047B53FE1B5FDA0000106180 /* AppDelegate.swift in Sources */,

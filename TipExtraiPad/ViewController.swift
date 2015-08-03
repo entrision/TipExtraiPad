@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var itemTableView: UITableView!
     @IBOutlet weak var detailView: UIView!
     @IBOutlet weak var itemActivity: UIActivityIndicatorView!
+    @IBOutlet weak var deliveredButton: ActivityButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,17 @@ class ViewController: UIViewController {
     }
     
     //MARK: Actions
+    
+    @IBAction func deliveredButtonTapped(sender: AnyObject) {
+        
+        deliveredButton.startAnimating()
+        APIManager.completeOrder(1, orderID: itemTableHandler.order.orderID, success: { (responseStatus, responseDict) -> () in
+            self.deliveredButton.stopAnimating()
+        }) { (error) -> () in
+            self.deliveredButton.stopAnimating()
+            println(error)
+        }
+    }
     
     func serviceSwitchToggled() {
         
