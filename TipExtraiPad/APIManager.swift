@@ -80,15 +80,23 @@ class APIManager: NSObject {
     
     //MARK: Menu
     
-    class func toggleService(menuID: NSNumber, serviceOn: Bool, success: ()->(), failure: (error: NSError!)->()) {
+    class func toggleService(menuID: NSNumber, serviceOn: Bool, success: (responseStatus: Int!, responseDict: NSDictionary!)->(), failure: (error: NSError!)->()) {
+        
+        let params = ["menu": ["service_enabled": serviceOn ? "true" : "false"]]
         
         let url = kBaseURL + "menus/\(menuID)"
-        Alamofire.request(.PATCH, url, parameters: nil, encoding: .JSON, headers: nil)
+        Alamofire.request(.PATCH, url, parameters: params, encoding: .JSON, headers: nil)
         .responseJSON { (request, response, JSON, error) -> Void in
+            println(JSON)
+            let jsonDict = JSON as! NSDictionary
             if error != nil {
                 failure(error: error)
             } else {
-                success()
+                if let errorDict = jsonDict.objectForKey(Utils.kErrorsKey) as? NSDictionary {
+                    success(responseStatus: Utils.kFailureStatus, responseDict: errorDict)
+                } else {
+                    success(responseStatus: Utils.kSuccessStatus, responseDict: nil)
+                }
             }
         }
     }

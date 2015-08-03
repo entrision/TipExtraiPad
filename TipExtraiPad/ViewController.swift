@@ -55,13 +55,18 @@ class ViewController: UIViewController {
             detailView.hidden = true
         }
         
-        APIManager.toggleService(1, serviceOn: serviceSwitch.on, success: { () -> () in
-            if self.serviceSwitch.on {
-                self.menuTableView.hidden = false
-                self.detailView.hidden = false
+        APIManager.toggleService(1, serviceOn: serviceSwitch.on, success: { (responseStatus, responseDict) -> () in
+            
+            if responseStatus == Utils.kSuccessStatus {
+                if self.serviceSwitch.on {
+                    self.menuTableView.hidden = false
+                    self.detailView.hidden = false
+                }
+            } else {
+                let message = responseDict.valueForKey("message") as! String
+                self.showErrorAlertWithTitle("Uh oh!", theMessage: message)
             }
         }) { (error) -> () in
-            //authentication error
             println(error)
         }
     }
@@ -75,6 +80,12 @@ class ViewController: UIViewController {
         }) { (error) -> () in
             println(error)
         }
+    }
+    
+    func showErrorAlertWithTitle(theTitle: String, theMessage: String) {
+        var alert = UIAlertController(title: theTitle, message: theMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
 
