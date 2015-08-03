@@ -36,6 +36,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OwZ-YJ-i7d">
                                 <rect key="frame" x="0.0" y="64" width="513" height="704"/>
                                 <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Ngb-IO-FBa">
+                                        <rect key="frame" x="238" y="264" width="37" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="37" id="OcT-X6-8Hq"/>
+                                            <constraint firstAttribute="width" constant="37" id="exo-aw-M05"/>
+                                        </constraints>
+                                    </activityIndicatorView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CNd-wr-D0J">
                                         <rect key="frame" x="60" y="0.0" width="393" height="565"/>
                                         <color key="backgroundColor" white="0.048951048951048952" alpha="1" colorSpace="calibratedWhite"/>
@@ -58,6 +65,8 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="CNd-wr-D0J" secondAttribute="trailing" constant="60" id="0iU-k5-GaI"/>
                                     <constraint firstItem="CNd-wr-D0J" firstAttribute="top" secondItem="OwZ-YJ-i7d" secondAttribute="top" id="6Ns-HJ-mV6"/>
+                                    <constraint firstItem="Ngb-IO-FBa" firstAttribute="top" secondItem="OwZ-YJ-i7d" secondAttribute="top" constant="264" id="6X2-zi-Y1W"/>
+                                    <constraint firstAttribute="centerX" secondItem="Ngb-IO-FBa" secondAttribute="centerX" id="Ii6-Sd-pl1"/>
                                     <constraint firstAttribute="bottom" secondItem="rGz-6Z-vyt" secondAttribute="bottom" constant="41" id="Z8V-pe-9gf"/>
                                     <constraint firstItem="CNd-wr-D0J" firstAttribute="leading" secondItem="OwZ-YJ-i7d" secondAttribute="leading" constant="60" id="bqc-zT-aUn"/>
                                     <constraint firstItem="rGz-6Z-vyt" firstAttribute="top" secondItem="CNd-wr-D0J" secondAttribute="bottom" constant="33" id="eZe-eB-s5u"/>
@@ -79,24 +88,14 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OwZ-YJ-i7d" secondAttribute="bottom" id="v3E-qR-ePG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Enh-Gx-5xk">
-                        <barButtonItem key="rightBarButtonItem" id="XmI-J8-6i8">
-                            <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="63p-RI-ScC">
-                                <rect key="frame" x="-25" y="-15" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="serviceSwitchToggled:" destination="BYZ-38-t0r" eventType="valueChanged" id="OqH-Xa-Mef"/>
-                                </connections>
-                            </switch>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Enh-Gx-5xk"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="detailView" destination="OwZ-YJ-i7d" id="5ci-FE-1Wj"/>
+                        <outlet property="itemActivity" destination="Ngb-IO-FBa" id="AZp-CR-OSc"/>
                         <outlet property="itemTableView" destination="CNd-wr-D0J" id="leM-GW-FRw"/>
                         <outlet property="menuTableView" destination="Ncj-MZ-eW9" id="jJy-Nf-xsa"/>
-                        <outlet property="serviceSwitch" destination="63p-RI-ScC" id="KEb-PG-Dkp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

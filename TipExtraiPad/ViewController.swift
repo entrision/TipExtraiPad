@@ -15,11 +15,13 @@ class ViewController: UIViewController {
     var dummyCell = OrderCell()
     var itemTableHandler = ItemTableHandler()
     var orderArray = NSArray()
+    
+    var serviceSwitch = UISwitch()
 
     @IBOutlet weak var menuTableView: UITableView!
     @IBOutlet weak var itemTableView: UITableView!
     @IBOutlet weak var detailView: UIView!
-    @IBOutlet weak var serviceSwitch: UISwitch!
+    @IBOutlet weak var itemActivity: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,11 @@ class ViewController: UIViewController {
         itemTableView.separatorStyle = .None
         
         dummyCell = NSBundle.mainBundle().loadNibNamed("OrderCell", owner: self, options: nil)[0] as! OrderCell
+        
+        serviceSwitch = UISwitch(frame: CGRectMake(0, 0, 50, 30))
+        serviceSwitch.addTarget(self, action: Selector("serviceSwitchToggled"), forControlEvents: UIControlEvents.ValueChanged)
+        serviceSwitch.on = true
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: serviceSwitch)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -48,15 +55,16 @@ class ViewController: UIViewController {
     
     //MARK: Actions
     
-    @IBAction func serviceSwitchToggled(sender: AnyObject) {
+    func serviceSwitchToggled() {
         
         if !serviceSwitch.on {
             menuTableView.hidden = true
             detailView.hidden = true
         }
         
+        showToggleActivityIndicator()
         APIManager.toggleService(1, serviceOn: serviceSwitch.on, success: { (responseStatus, responseDict) -> () in
-            
+            self.hideToggleActivityIndicator(self.serviceSwitch.on)
             if responseStatus == Utils.kSuccessStatus {
                 if self.serviceSwitch.on {
                     self.menuTableView.hidden = false
@@ -80,6 +88,20 @@ class ViewController: UIViewController {
         }) { (error) -> () in
             println(error)
         }
+    }
+    
+    func showToggleActivityIndicator() {
+        let activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 30, 30))
+        activityIndicator.activityIndicatorViewStyle = .White
+        activityIndicator.startAnimating()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
+    }
+    
+    func hideToggleActivityIndicator(isOn: Bool) {
+        serviceSwitch = UISwitch(frame: CGRectMake(0, 0, 50, 30))
+        serviceSwitch.addTarget(self, action: Selector("serviceSwitchToggled"), forControlEvents: UIControlEvents.ValueChanged)
+        serviceSwitch.on = isOn
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: serviceSwitch)
     }
     
     func showErrorAlertWithTitle(theTitle: String, theMessage: String) {
@@ -118,7 +140,13 @@ extension ViewController: UITableViewDelegate {
         
         let cell = menuTableView.cellForRowAtIndexPath(indexPath) as! OrderCell
         
+        if itemTableHandler.order.orderID == cell.order.orderID {
+            return
+        }
+        
+        itemTableView.hidden = true
         APIManager.getFullOrder(1, orderID: cell.order.orderID, success: { (responseStatus, responseDict) -> () in
+            self.itemTableView.hidden = false
             let order = cell.order
             order.orderItems = responseDict["order_items"] as? NSArray
             self.itemTableHandler.order = order
