@@ -78,6 +78,21 @@ class APIManager: NSObject {
         }
     }
     
+    //MARK: Menu
+    
+    class func toggleService(menuID: NSNumber, serviceOn: Bool, success: ()->(), failure: (error: NSError!)->()) {
+        
+        let url = kBaseURL + "menus/\(menuID)"
+        Alamofire.request(.PATCH, url, parameters: nil, encoding: .JSON, headers: nil)
+        .responseJSON { (request, response, JSON, error) -> Void in
+            if error != nil {
+                failure(error: error)
+            } else {
+                success()
+            }
+        }
+    }
+    
     //MARK: Images
     
     class func getImage(path: String, success: (theImage: UIImage!)->(), failure: (error: NSError!)->()) {

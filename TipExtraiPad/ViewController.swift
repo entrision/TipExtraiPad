@@ -50,8 +50,20 @@ class ViewController: UIViewController {
     
     @IBAction func serviceSwitchToggled(sender: AnyObject) {
         
-        menuTableView.hidden = !serviceSwitch.on
-        detailView.hidden = !serviceSwitch.on
+        if !serviceSwitch.on {
+            menuTableView.hidden = true
+            detailView.hidden = true
+        }
+        
+        APIManager.toggleService(1, serviceOn: serviceSwitch.on, success: { () -> () in
+            if self.serviceSwitch.on {
+                self.menuTableView.hidden = false
+                self.detailView.hidden = false
+            }
+        }) { (error) -> () in
+            //authentication error
+            println(error)
+        }
     }
     
     //MARK: Misc methods
