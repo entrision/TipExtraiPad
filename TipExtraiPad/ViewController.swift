@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     var serviceSwitch = UISwitch()
 
     @IBOutlet weak var menuTableView: UITableView!
+    @IBOutlet weak var orderView: UIView!
     @IBOutlet weak var itemTableView: UITableView!
     @IBOutlet weak var detailView: UIView!
     @IBOutlet weak var itemActivity: UIActivityIndicatorView!
@@ -70,7 +71,7 @@ class ViewController: UIViewController {
     func serviceSwitchToggled() {
         
         if !serviceSwitch.on {
-            menuTableView.hidden = true
+            orderView.hidden = true
             detailView.hidden = true
         }
         
@@ -79,7 +80,7 @@ class ViewController: UIViewController {
             self.hideToggleActivityIndicator(self.serviceSwitch.on)
             if responseStatus == Utils.kSuccessStatus {
                 if self.serviceSwitch.on {
-                    self.menuTableView.hidden = false
+                    self.orderView.hidden = false
                     self.detailView.hidden = false
                 }
             } else {
@@ -96,7 +97,17 @@ class ViewController: UIViewController {
     func getOrders() {
         APIManager.getOrders(1, success: { (responseStatus, responseArray) -> () in
             self.orderArray = responseArray as! [Order]
-            self.menuTableView.reloadData()
+            if self.orderArray.count > 0 {
+                self.deliveredButton.alpha = 1.0
+                self.deliveredButton.enabled = true
+                self.menuTableView.hidden = false
+                self.menuTableView.reloadData()
+            } else {
+                self.deliveredButton.alpha = 0.5
+                self.deliveredButton.enabled = false
+                self.menuTableView.hidden = true
+            }
+            
         }) { (error) -> () in
             println(error)
         }
