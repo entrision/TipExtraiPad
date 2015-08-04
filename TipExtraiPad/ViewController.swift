@@ -62,6 +62,7 @@ class ViewController: UIViewController {
         deliveredButton.startAnimating()
         APIManager.completeOrder(1, orderID: itemTableHandler.order.orderID, success: { (responseStatus, responseDict) -> () in
             self.deliveredButton.stopAnimating()
+            self.getOrders()
         }) { (error) -> () in
             self.deliveredButton.stopAnimating()
             println(error)
@@ -98,16 +99,42 @@ class ViewController: UIViewController {
         APIManager.getOrders(1, success: { (responseStatus, responseArray) -> () in
             self.orderArray = responseArray as! [Order]
             if self.orderArray.count > 0 {
-                self.deliveredButton.alpha = 1.0
-                self.deliveredButton.enabled = true
                 self.menuTableView.hidden = false
                 self.menuTableView.reloadData()
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.menuTableView.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: false, scrollPosition: .Top)
+                    self.handleSelectAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+                })
             } else {
-                self.deliveredButton.alpha = 0.5
-                self.deliveredButton.enabled = false
                 self.menuTableView.hidden = true
+                self.itemTableHandler.order = Order()
+                self.itemTableView.reloadData()
+                self.deliveredButton.enabled = false
+                self.deliveredButton.alpha = 0.5
             }
             
+        }) { (error) -> () in
+            println(error)
+        }
+    }
+    
+    func handleSelectAtIndexPath(indexPath: NSIndexPath) {
+        let cell = menuTableView.cellForRowAtIndexPath(indexPath) as! OrderCell
+        
+        if itemTableHandler.order.orderID == cell.order.orderID {
+            return
+        }
+        
+        itemTableView.hidden = true
+        deliveredButton.enabled = false
+        APIManager.getFullOrder(1, orderID: cell.order.orderID, success: { (responseStatus, responseDict) -> () in
+            self.itemTableView.hidden = false
+            self.deliveredButton.enabled = true
+            self.deliveredButton.alpha = 1.0
+            let order = cell.order
+            order.orderItems = responseDict["order_items"] as? NSArray
+            self.itemTableHandler.order = order
+            self.itemTableView.reloadData()
         }) { (error) -> () in
             println(error)
         }
@@ -160,23 +187,7 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        let cell = menuTableView.cellForRowAtIndexPath(indexPath) as! OrderCell
-        
-        if itemTableHandler.order.orderID == cell.order.orderID {
-            return
-        }
-        
-        itemTableView.hidden = true
-        APIManager.getFullOrder(1, orderID: cell.order.orderID, success: { (responseStatus, responseDict) -> () in
-            self.itemTableView.hidden = false
-            let order = cell.order
-            order.orderItems = responseDict["order_items"] as? NSArray
-            self.itemTableHandler.order = order
-            self.itemTableView.reloadData()
-        }) { (error) -> () in
-            println(error)
-        }
+        handleSelectAtIndexPath(indexPath)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
