@@ -15,10 +15,12 @@ class ViewController: UIViewController {
     var dummyCell = OrderCell()
     var itemTableHandler = ItemTableHandler()
     var orderArray = NSArray()
+    var orderCount = 0
     
     var serviceSwitch = UISwitch()
+    var orderFetchTimer = NSTimer()
 
-    @IBOutlet weak var menuTableView: UITableView!
+    @IBOutlet weak var orderTableView: UITableView!
     @IBOutlet weak var orderView: UIView!
     @IBOutlet weak var itemTableView: UITableView!
     @IBOutlet weak var detailView: UIView!
@@ -31,9 +33,9 @@ class ViewController: UIViewController {
         
         title = "TIPEXTRA"
         
-        menuTableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        menuTableView.registerNib(UINib(nibName: "OrderCell", bundle: nil), forCellReuseIdentifier: cellID)
-        menuTableView.indicatorStyle = UIScrollViewIndicatorStyle.White
+        orderTableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        orderTableView.registerNib(UINib(nibName: "OrderCell", bundle: nil), forCellReuseIdentifier: cellID)
+        orderTableView.indicatorStyle = UIScrollViewIndicatorStyle.White
 
         itemTableView.dataSource = itemTableHandler
         itemTableView.delegate = itemTableHandler
@@ -52,7 +54,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         getOrders()
-//        NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: Selector("getOrders"), userInfo: nil, repeats: true)
+        orderFetchTimer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: Selector("getOrders"), userInfo: nil, repeats: true)
     }
     
     //MARK: Actions
@@ -74,6 +76,7 @@ class ViewController: UIViewController {
         if !serviceSwitch.on {
             orderView.hidden = true
             detailView.hidden = true
+            orderFetchTimer.invalidate()
         }
         
         showToggleActivityIndicator()
@@ -83,6 +86,7 @@ class ViewController: UIViewController {
                 if self.serviceSwitch.on {
                     self.orderView.hidden = false
                     self.detailView.hidden = false
+                    self.orderFetchTimer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: Selector("getOrders"), userInfo: nil, repeats: true)
                 }
             } else {
                 let message = responseDict.valueForKey("message") as! String
@@ -99,14 +103,34 @@ class ViewController: UIViewController {
         APIManager.getOrders(1, success: { (responseStatus, responseArray) -> () in
             self.orderArray = responseArray as! [Order]
             if self.orderArray.count > 0 {
-                self.menuTableView.hidden = false
-                self.menuTableView.reloadData()
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.menuTableView.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: false, scrollPosition: .Top)
-                    self.handleSelectAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
-                })
+                if self.orderArray.count > self.orderCount {    //new orders were added
+                    self.orderCount = self.orderArray.count
+                    self.orderTableView.hidden = false
+                    var rowIndex = 0
+                    if self.itemTableHandler.order.orderItems?.count > 0 {
+                        if let theRowIndexPath = self.orderTableView.indexPathForSelectedRow() {
+                            if theRowIndexPath.row == self.orderTableView.numberOfRowsInSection(0) - 1 {
+                                rowIndex = theRowIndexPath.row + 1
+                            } else {
+                                rowIndex = theRowIndexPath.row
+                            }
+                        }
+                    }
+                    self.orderTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.orderTableView.selectRowAtIndexPath(NSIndexPath(forRow: rowIndex, inSection: 0), animated: false, scrollPosition: .Top)
+                        self.handleSelectAtIndexPath(NSIndexPath(forRow: rowIndex, inSection: 0))
+                    })
+                } else if self.orderArray.count < self.orderCount {     //order was delivered
+                    self.orderCount = self.orderArray.count
+                    self.orderTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.orderTableView.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: false, scrollPosition: .Top)
+                        self.handleSelectAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+                    })
+                }
             } else {
-                self.menuTableView.hidden = true
+                self.orderTableView.hidden = true
                 self.itemTableHandler.order = Order()
                 self.itemTableView.reloadData()
                 self.deliveredButton.enabled = false
@@ -119,7 +143,7 @@ class ViewController: UIViewController {
     }
     
     func handleSelectAtIndexPath(indexPath: NSIndexPath) {
-        let cell = menuTableView.cellForRowAtIndexPath(indexPath) as! OrderCell
+        let cell = orderTableView.cellForRowAtIndexPath(indexPath) as! OrderCell
         
         if itemTableHandler.order.orderID == cell.order.orderID {
             return

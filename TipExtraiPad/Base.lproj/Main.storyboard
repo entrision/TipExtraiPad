@@ -123,7 +123,7 @@
                         <outlet property="detailView" destination="OwZ-YJ-i7d" id="5ci-FE-1Wj"/>
                         <outlet property="itemActivity" destination="Ngb-IO-FBa" id="AZp-CR-OSc"/>
                         <outlet property="itemTableView" destination="CNd-wr-D0J" id="leM-GW-FRw"/>
-                        <outlet property="menuTableView" destination="Ncj-MZ-eW9" id="jJy-Nf-xsa"/>
+                        <outlet property="orderTableView" destination="Ncj-MZ-eW9" id="WVz-K1-AsK"/>
                         <outlet property="orderView" destination="ce4-er-2Oi" id="bYP-rt-IHT"/>
                     </connections>
                 </viewController>
