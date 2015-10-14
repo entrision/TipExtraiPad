@@ -21,7 +21,7 @@ class OrderCell: UITableViewCell {
         didSet {
             titleLabel.text = "ORDER \(order.orderID) | \(order.customerName)"
             priceLabel.text = String(format: "$%.2f", order.orderTotal)
-            var drinksText = order.drinkTotal > 1 ? "DRINKS" : "DRINK"
+            let drinksText = order.drinkTotal > 1 ? "DRINKS" : "DRINK"
             quantityLabel.text = "\(order.drinkTotal) \(drinksText)"
         }
     }

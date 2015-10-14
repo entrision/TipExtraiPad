@@ -67,7 +67,7 @@ class ViewController: UIViewController {
             self.getOrders()
         }) { (error) -> () in
             self.deliveredButton.stopAnimating()
-            println(error)
+            print(error)
         }
     }
     
@@ -93,7 +93,7 @@ class ViewController: UIViewController {
                 self.showErrorAlertWithTitle("Uh oh!", theMessage: message)
             }
         }) { (error) -> () in
-            println(error)
+            print(error)
         }
     }
     
@@ -108,7 +108,7 @@ class ViewController: UIViewController {
                     self.orderTableView.hidden = false
                     var rowIndex = 0
                     if self.itemTableHandler.order.orderItems?.count > 0 {
-                        if let theRowIndexPath = self.orderTableView.indexPathForSelectedRow() {
+                        if let theRowIndexPath = self.orderTableView.indexPathForSelectedRow {
                             if theRowIndexPath.row == self.orderTableView.numberOfRowsInSection(0) - 1 {
                                 rowIndex = theRowIndexPath.row + 1
                             } else {
@@ -138,7 +138,7 @@ class ViewController: UIViewController {
             }
             
         }) { (error) -> () in
-            println(error)
+            print(error)
         }
     }
     
@@ -160,7 +160,7 @@ class ViewController: UIViewController {
             self.itemTableHandler.order = order
             self.itemTableView.reloadData()
         }) { (error) -> () in
-            println(error)
+            print(error)
         }
     }
     
@@ -179,7 +179,7 @@ class ViewController: UIViewController {
     }
     
     func showErrorAlertWithTitle(theTitle: String, theMessage: String) {
-        var alert = UIAlertController(title: theTitle, message: theMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: theTitle, message: theMessage, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
@@ -197,7 +197,7 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! OrderCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! OrderCell
         
         let order = orderArray[indexPath.row] as! Order
         cell.order = order

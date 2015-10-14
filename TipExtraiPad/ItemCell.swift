@@ -21,7 +21,7 @@ class ItemCell: UITableViewCell {
             APIManager.getImage(drink.imageURL, success: { (theImage) -> () in
                 self.theImageView.image = theImage
             }) { (error) -> () in
-                println(error)
+                print(error)
             }
             
             titleLabel.text = drink.name

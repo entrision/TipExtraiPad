@@ -6,7 +6,7 @@ use_frameworks!
 
 target 'TipExtraiPad' do
     
-    pod 'Alamofire', '~> 1.2'
+    pod 'Alamofire', '~> 2.0'
 
 end
 
